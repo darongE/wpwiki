@@ -32,7 +32,7 @@ ecm_generate_headers(
                           WPMediaWiki_HEADERS
                           HEADER_NAMES
                           BrowsePage
-
+                          Work
                           REQUIRED_HEADERS MediaWiki_HEADERS
 )
 
@@ -42,7 +42,7 @@ install(TARGETS WPMediaWiki
         ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
-      #      ${CMAKE_CURRENT_BINARY_DIR}/mediawiki_export.h
+            ${CMAKE_CURRENT_BINARY_DIR}/mediawiki_export.h
             ${MediaWiki_HEADERS}
             ${WPMediaWiki_HEADERS}
         DESTINATION ${WPMEDIAWIKI_INCLUDE_INSTALL_DIR}/MediaWiki
