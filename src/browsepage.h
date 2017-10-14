@@ -2,11 +2,36 @@
 #define BROWSEPAGE_H
 
 // Qt Lib
-#include <QDateTime>
-#include <QString>
+
+#include <QTimer>
 #include <QUrl>
-#include <QVariant>
+#include <QUrlQuery>
+#include <QXmlStreamReader>
+#include <QCryptographicHash>
+#include <QStringList>
+
+#include <QNetworkCookie>
 #include <QNetworkCookieJar>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+
+
+namespace mediawiki {
+
+class Result
+{
+public:
+   unsigned int m_captchaId;
+   QVariant     m_captchaQuestion;
+   QString      m_captchaAnswer;
+
+};
+
+
+//class BrowsePagePrivate : public
+}
+
+
 
 
 
