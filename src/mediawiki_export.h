@@ -7,7 +7,7 @@
 #  define MEDIAWIKI_NO_EXPORT
 #else
 #  ifndef MEDIAWIKI_EXPORT
-#    ifdef KF5MediaWiki_EXPORTS
+#    ifdef WPMediaWiki_EXPORTS
         /* We are building this library */
 #      define MEDIAWIKI_EXPORT __attribute__((visibility("default")))
 #    else
