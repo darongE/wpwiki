@@ -1,7 +1,11 @@
 
 
 set(MediaWiki_SRCS
-    browsepage.cpp)
+    browsepage.cpp
+    Work.cpp
+    MediaWiki.cpp
+
+    )
 
 
 
@@ -33,6 +37,7 @@ ecm_generate_headers(
                           HEADER_NAMES
                           BrowsePage
                           Work
+                          MediaWiki
                           REQUIRED_HEADERS MediaWiki_HEADERS
 )
 
