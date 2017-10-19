@@ -4,7 +4,8 @@ set(MediaWiki_SRCS
     browsepage.cpp
     Work.cpp
     MediaWiki.cpp
-
+    Query.cpp
+    WikiPage.cpp
     )
 
 
@@ -38,6 +39,8 @@ ecm_generate_headers(
                           BrowsePage
                           Work
                           MediaWiki
+                          Query
+                          WikiPage
                           REQUIRED_HEADERS MediaWiki_HEADERS
 )
 
