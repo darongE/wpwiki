@@ -49,4 +49,12 @@ void Work::processUploadProgress(qint64 bytesReceived, qint64 bytesTotal)
     setProcessedAmount(Work::Bytes, bytesReceived);
 }
 
+
+
+
+
+
+
+
+
 } //namespace mediawiki
