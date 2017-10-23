@@ -64,7 +64,7 @@ public:
      * @param parent
      */
 
-    explicit BrowsePage(MediaWiki& media, QObject* parent = 0);
+    explicit BrowsePage(MediaWiki& media, QObject* pa = 0);
 
     /**
      * @brief Destorys the Browsepage work
