@@ -55,7 +55,6 @@ public:
      */
     void setToken(const QString& token);
 
-
     /**
      * @brief set the page ID
      * @param id : page ID
@@ -83,12 +82,10 @@ private Q_SLOTS:
     /**
      * @brief SendRequest
      */
-
     void SendRequest();
     void ProcessReply();
 
+};  //namespace mediawiki
 
-
-};
 }
 #endif // QUERY_H

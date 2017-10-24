@@ -198,9 +198,6 @@ private Q_SLOTS:
     void sendRequest();
     void finished();
 
-private Q_SLOTS:
-
-
     /**
      * @brief Put the captcha answer.
      * @param captcha the captcha answer
