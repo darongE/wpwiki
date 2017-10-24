@@ -211,13 +211,13 @@ void BrowsePage::setWatchList(BrowsePage::Watchlist watchlist)
         d->requestParam[QStringLiteral("watchlist")]= QString(QStringLiteral("watch"));
         break;
     case BrowsePage::unwatch:
-        d->requestParameter[QStringLiteral("watchlist")] = QString(QStringLiteral("unwatch"));
+        d->requestParam[QStringLiteral("watchlist")] = QString(QStringLiteral("unwatch"));
         break;
     case BrowsePage::nochange:
-        d->requestParameter[QStringLiteral("watchlist")] = QString(QStringLiteral("nochange"));
+        d->requestParam[QStringLiteral("watchlist")] = QString(QStringLiteral("nochange"));
         break;
     case BrowsePage::preferences:
-        d->requestParameter[QStringLiteral("watchlist")] = QString(QStringLiteral("preferences"));
+        d->requestParam[QStringLiteral("watchlist")] = QString(QStringLiteral("preferences"));
         break;
     }
 }
@@ -225,6 +225,8 @@ void BrowsePage::setWatchList(BrowsePage::Watchlist watchlist)
 void BrowsePage::start()
 {
     Q_D(BrowsePage);
+
+
 
 }
 

@@ -6,6 +6,7 @@ set(MediaWiki_SRCS
     MediaWiki.cpp
     Query.cpp
     WikiPage.cpp
+    shield.cpp
     )
 
 
@@ -41,6 +42,7 @@ ecm_generate_headers(
                           MediaWiki
                           Query
                           WikiPage
+                          shield
                           REQUIRED_HEADERS MediaWiki_HEADERS
 )
 
