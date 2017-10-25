@@ -43,6 +43,7 @@ ecm_generate_headers(
                           Query
                           WikiPage
                           shield
+                          cookiehandler
                           REQUIRED_HEADERS MediaWiki_HEADERS
 )
 
