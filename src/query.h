@@ -85,7 +85,10 @@ private Q_SLOTS:
     void SendRequest();
     void ProcessReply();
 
-};  //namespace mediawiki
 
-}
+};
+
+
+
+}  //namespace mediawiki
 #endif // QUERY_H
