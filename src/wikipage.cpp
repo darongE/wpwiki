@@ -176,11 +176,4 @@ QString WikiPage::pagePreload() const
 }
 
 
-
-
-
-
-
-
-
 } // namespace mediawiki
