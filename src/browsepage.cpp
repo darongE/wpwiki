@@ -14,6 +14,7 @@
 #include <QNetworkRequest>
 
 #include "MediaWiki.h"
+#include "query.h"
 #include "work_p.h"
 
 namespace mediawiki
@@ -225,9 +226,64 @@ void BrowsePage::setWatchList(BrowsePage::Watchlist watchlist)
 void BrowsePage::start()
 {
     Q_D(BrowsePage);
+    Query* p_query = new Query(d->m_mediawiki, this);
+    p_query->setPageName(d->requestParam[QStringLiteral("title")]);
+    p_query->setToken(QStringLiteral("edit"));
+    connect(info, SIGNAL(getPage(WikiPage)),
+            this, SLOT(sendRequest(WikiPage)));
 
-
+    p_query->start();
 
 }
+//e.g
+//www.mediawiki.org/w/index.php
+//?title=Project:Sandbox
+//&action=edit
+void BrowsePage::sendRequest(WikiPage wiki_page)
+{
+    Q_D(BrowsePage);
+    d->requestParam[QStringLiteral("token")] = wiki_page.pageEditToken();
+
+    QUrl    url = d->m_mediawiki.url();
+    QUrlQuery url_query;
+    url_query.addQueryItem(QStringLiteral("format"),QStringLiteral("xml"));
+    url_query.addQueryItem(QStringLiteral("action"), QStringLiteral("edit"));
+
+    // Add parameter
+
+    if(d->requestParam.contains(QStringLiteral("md5")))
+    {
+        QString text;
+        if(d->requestParam.contains(QStringLiteral("prependtext")))
+            text += d->requestParam[QStringLiteral("prependtext")];
+        if(d->requestParam.contains(QStringLiteral("appendtext")))
+            text += d->requestParam[QStringLiteral("appendtext")];
+        if(d->requestParam.contains(QStringLiteral("text")))
+            text += d->requestParam[QStringLiteral("text")];
+
+
+        // prependtext & appendtext : text param
+        QByteArray hash = QCryptographicHash::hash(text.toUtf8(),QCryptographicHash::Md5);
+        d->requestParam[QStringLiteral("md5")] = QString::fromLatin1(hash.toText());
+    }
+}
+
+
+
+
+
+
+
+//md5: MD5 hash (hex) of the text parameter or the prependtext and appendtext parameters concatenated.
+//If this parameter is set and the hashes don't match,
+//the edit is rejected. This can be used to guard against data corruption.
+
+
+
+
+
+
+
+
 
 }

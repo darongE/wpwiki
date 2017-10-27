@@ -195,7 +195,7 @@ void Query::ProcessReply()
         if(!reader.hasError())
         {
             setError(KJob::NoError);
-            emit shield_work(v_shield);  //send work-protection..
+            emit shield_work(v_shield);  //send protection..
             emit WikiPage(d->wiki_page);
         }
         else
