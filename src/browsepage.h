@@ -10,6 +10,7 @@
 #include <QNetworkCookieJar>
 
 #include "work.h"
+#include "query.h"
 #include "mediawiki_export.h"
 
 
@@ -195,7 +196,7 @@ Q_SIGNALS:
 private Q_SLOTS:
 
     // bring data from page
-    void sendRequest();
+    void sendRequest(WikiPage wiki_page);
     void finished();
 
     /**
