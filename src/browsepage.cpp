@@ -157,8 +157,6 @@ void BrowsePage::setRecreate(bool recreate)
        d->requestParam[QStringLiteral("recreate")] = QStringLiteral("on");
        d->requestParameter[QStringLiteral("md5")] = QString();
     }
-
-
 }
 
 void BrowsePage::setCreateonly(bool createonly)
@@ -261,28 +259,11 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
         if(d->requestParam.contains(QStringLiteral("text")))
             text += d->requestParam[QStringLiteral("text")];
 
-
         // prependtext & appendtext : text param
         QByteArray hash = QCryptographicHash::hash(text.toUtf8(),QCryptographicHash::Md5);
         d->requestParam[QStringLiteral("md5")] = QString::fromLatin1(hash.toText());
     }
 }
-
-
-
-
-
-
-
-//md5: MD5 hash (hex) of the text parameter or the prependtext and appendtext parameters concatenated.
-//If this parameter is set and the hashes don't match,
-//the edit is rejected. This can be used to guard against data corruption.
-
-
-
-
-
-
 
 
 
