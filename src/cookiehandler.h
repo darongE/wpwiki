@@ -19,20 +19,33 @@ public:
     CookieHandler(QObject *parent = nullptr) : QObject(parent)
     {
         mManager = new QNetworkAccessManager(this);
-
         mManager->setCookieJar(new QNetworkCookieJar(this));
+
+    }
+
+
+    void sendSignal(const QUrl &url)
+    {
+        mUrl = url;
         connect(mManager, SIGNAL(finished(QNetworkRequest*, QNetworkReply*)),
                 SLOT(replyFinished(QNetworkRequest*, QNetworkReply*)));
     }
 
 
-    void sendPostRequest(const QUrl &url, const QByteArray &data)
+
+    void sendPostRequest( const QByteArray &data, QString strCase )
     {
-        mUrl = url;
 
         QNetworkRequest r(mUrl);
         r.setRawHeader("User-Agent",data);
-        mManager->post(r, data);
+
+        if(strCase == "BROWSE_PAGE")
+        {
+           r.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
+           r.setRawHeader( "Cookie", cookie );
+
+        }
+
 
     }
 
@@ -73,12 +86,12 @@ private slots:
               bytecookie += ';';
           }
 
-        request->setRawHeader("Cookie", bytecookie );
+       // request->setRawHeader("Cookie", bytecookie );
 
     }
 
-
 private:
+
     QNetworkAccessManager *mManager;
     QUrl mUrl;
 };

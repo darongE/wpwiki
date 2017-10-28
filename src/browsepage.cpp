@@ -16,6 +16,7 @@
 #include "MediaWiki.h"
 #include "query.h"
 #include "work_p.h"
+#include "cookiehandler.h"
 
 namespace mediawiki
 {
@@ -76,6 +77,8 @@ public:
     QMap<QString, QString>  requestParam;
     Result                  result;
 
+    CookieHandler           *h_cookie;
+
 
 
 };
@@ -83,9 +86,17 @@ public:
 BrowsePage::BrowsePage(MediaWiki& media, QObject* parent)
           : Work(*new BrowsePagePrivate(media),parent)
 {
-
+    Q_D(BrowsePage);
+    d->h_cookie = new CookieHandler(this);
 }
 
+
+BrowsePage::~BrowsePage()
+{
+   Q_D(BrowsePage);
+   delete d->h_cookie;
+
+}
 void BrowsePage::setUndoAfter(int undoafter)
 {
     Q_D(BrowsePage);
@@ -157,6 +168,8 @@ void BrowsePage::setRecreate(bool recreate)
        d->requestParam[QStringLiteral("recreate")] = QStringLiteral("on");
        d->requestParameter[QStringLiteral("md5")] = QString();
     }
+
+
 }
 
 void BrowsePage::setCreateonly(bool createonly)
@@ -259,11 +272,60 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
         if(d->requestParam.contains(QStringLiteral("text")))
             text += d->requestParam[QStringLiteral("text")];
 
+
         // prependtext & appendtext : text param
         QByteArray hash = QCryptographicHash::hash(text.toUtf8(),QCryptographicHash::Md5);
         d->requestParam[QStringLiteral("md5")] = QString::fromLatin1(hash.toText());
     }
+
+
+    QMapIterator<QString, QString> i(d->requestParam);
+
+    while(i.hasNext())
+    {
+        i.next();
+        if(i.key() != QStringLiteral("token"))
+            url_query.addQueryItem(i.key(),i.value());
+
+
+    }
+
+    d->h_cookie->sendSignal(url);
+    url_query.addQueryItem(QStringLiteral("token"), d->requestParam[QStringLiteral("token")]);
+    url.setQuery(url_query);
+
+    d->baseUrl = url;
+    d->h_cookie->sendPostRequest(d->m_mediawiki.userAgent().toUtf8(),"BROWSE_PAGE" );
+    d->reply = d->cookie_handler->getReply();
+
+    setPercent(25);
+
+    // Send the request
+    d->reply = d->manager->post( request, url.toString().toUtf8() );
+
+    connectReply();
+    connect( d->reply, SIGNAL(finished()), this, SLOT(finishedEdit()) );
+
+    setPercent(50);
+
 }
+
+
+
+
+
+
+
+
+//md5: MD5 hash (hex) of the text parameter or the prependtext and appendtext parameters concatenated.
+//If this parameter is set and the hashes don't match,
+//the edit is rejected. This can be used to guard against data corruption.
+
+
+
+
+
+
 
 
 

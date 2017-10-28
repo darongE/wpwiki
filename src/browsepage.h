@@ -197,7 +197,7 @@ private Q_SLOTS:
 
     // bring data from page
     void sendRequest(WikiPage wiki_page);
-    void finished();
+    void finishedEdit();
 
     /**
      * @brief Put the captcha answer.

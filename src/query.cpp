@@ -25,12 +25,15 @@ public:
 
     QueryPrivate(MediaWiki& mediawiki)
         : WorkPrivate(mediawiki)
-    {}
+    {
+
+
+    }
 
     QVector<Shield>         m_vec_shield;
     QMap<QString, QString>  requestParam;
     WikiPage                wiki_page;
-    CookieHandler           cookie_handler;
+    CookieHandler           *cookie_handler;
 
 };
 
@@ -39,11 +42,14 @@ Query::Query(MediaWiki& mediawiki, QObject* const parent)
      : Work(*new Query(mediawiki), parent)
 {
 
+   Q_D(Query);
+   d->cookie_handler = new CookieHandler(this);
 }
 
 Query::~Query()
 {
-
+    Q_D(Query);
+    delete d->cookie_handler;
 }
 
 void Query::setPageName(const QString &title)
@@ -102,8 +108,10 @@ void Query::SendRequest()
     url.setQuery(query);
 
     // this part will handle in Cookiehandler.h
-    d->cookie_handler.sendPostRequest(url,d->m_mediawiki.userAgent().toUtf8());
-    d->reply = d->cookie_handler.getReply();
+    d->cookie_handler->sendSignal(url);
+    d->cookie_handler->sendPostRequest(d->m_mediawiki.userAgent().toUtf8());
+
+    d->reply = d->cookie_handler->getReply();
 
      connect(d->reply, SIGNAL(finished()), this, SLOT(ProcessReply()));
   }
