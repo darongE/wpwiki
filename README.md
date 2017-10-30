@@ -1,6 +1,6 @@
-## Qt Mediawiki API Query Tool using CMAKE
+## Qt Mediawiki API Query Tool 💡
 
-QNetworkManager based tool to ask any Mediawiki API in a event based way.
+- QNetworkManager based tool to ask any Mediawiki API in a event based way.
 
 ### Dependencies
 
@@ -9,3 +9,9 @@ QNetworkManager based tool to ask any Mediawiki API in a event based way.
 * KCoreAddons
 
 ### ScreenShot
+
+* coming soon...
+
+
+### Keep update 🙍
+- Author : Sun mi Kang
