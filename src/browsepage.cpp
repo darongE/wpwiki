@@ -304,19 +304,132 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
     d->reply = d->manager->post( request, url.toString().toUtf8() );
 
     connectReply();
-    connect( d->reply, SIGNAL(finished()), this, SLOT(finishedEdit()) );
+    connect( d->reply, SIGNAL(finished()),
+             this, SLOT(finishedEdit()) );
 
     setPercent(50);
 
 }
 
+void BrowsePage::finishedEdit()
+{
+    Q_D(BrowsePage);
+    disconnect(d->reply, SIGNAL(finished()),
+               this, SLOT(finishedEdit()));
+
+    setPercent(75);
+
+    if( d->reply->error() != QNetworkReply::NoError)
+    {
+        this->setError(this->NetworkError);
+        d->reply->close();
+        d->reply->deleteLater();
+        emitResult();
+
+        return;
+
+    }
+
+    QXmlStreamReader reader( d->reply );
+    while(!reader.atEnd() && !reader.hasError())
+    {
+        QXmlStreamReader::TokenType token = reader.readNext();
+
+        if(token == QXmlStreamReader::StartElement )
+        {
+            QXmlStreamAttributes attrs = reader.attributes();
+
+            if(reader.name() == QStringLiteral("edit"))
+            {
+                if(attrs.value(QStringLiteral("result") ).toString() == QLatin1String("Success"))
+                {
+                    setPercent(100);
+                    this->setError(KJob::NoError);
+                    d->reply->close();
+                    d->reply->deleteLater();
+                    emitResult();
+                    return;
+                }
+                else if( attrs.value(QStringLiteral("result")).toString() == QLatin1String("Failure"))
+                {
+                    this->setError(KJob::NoError);
+                    reader.readNext();
+                    attrs = reader.attributes();
+
+                    d->result.m_capchaId = attrs.value(QStringLiteral("id")).toString().toUInt();
+
+                    if(!attrs.value( QStringLiteral("question")).isEmpty())
+                        d->result.m_captchaQuestion = QVariant(attrs.value( QStringLiteral("question")).toString());
+                    else if(!attrs.value( QStringLiteral("url")).isEmpty())
+                        d->result.m_captchaQuestion = QVariant(attrs.value( QStringLiteral("url")).toString());
+                }
+            }
+            else if( reader.name() == QStringLiteral("error"))
+            {
+                this->setError(BrowsePagePrivate::error(attrs.value(QStringLiteral("code") ).toString()));
+                d->reply->close();
+                d->reply->deleteLater();
+                emitResult();
+                return;
+            }
+
+          }
+          else if(token == QXmlStreamReader::Invalid &&
+                  reader.error() != QXmlStreamReader::PrematureEndOfDocumentError)
+          {
+
+              this->setError(this->XmlError);
+              d->reply->close();
+              d->reply->deleteLater();
+              emitResult();
+              return;
+          }
+       }
+
+        d->reply->close();
+        d->reply->deleteLater();
+        emit resultCaptcha(d->result.m_captchaQuestion);
 
 
+}
 
 
+void BrowsePage::finishedCaptcha(const QString& captcha)
+{
+    Q_D(BrowsePage);
+    d->result.m_captchaAnswer = captcha;
+
+    QUrl url         = d->baseUrl;
+    QUrlQuery   query;
+
+    query.addQueryItem(QStringLiteral("CaptchaId"), QString::number(d->result.m_capchaId));
+    query.addQueryItem(QStringLiteral("CaptchaAnswer"), d->result.m_captchaAnswer);
+
+    url.setQuery(query);
+    QString data = url.toString();
+    QByteArray byte_cookie;
+    QList<QNetworkCookie> mediawiki_cookies = d->mManager->cookieJar()->cookiesForUrl(d->m_mediawiki.url());
+
+    for(int i = 0; i < mediawiki_cookies.size(); ++i)
+    {
+        byte_cookie += mediawiki_cookies.at(i).toRawForm(QNetworkCookie::NameAndValueOnly);
+        byte_cookie += ';';
 
 
+    }
 
+    //set the request
+    QNetworkRequest request( url);
+    request.setRawHeader("User-Agent", d->m_mediawiki.userAgent().toUtf8());
+    request.setRawHeader("Cookie", byte_cookie);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
+    //send the request
+
+    d->reply = d->mManager->post(request, data.toUtf8());
+    connect( d->reply, SIGNAL(finished()),
+             this, SLOT(finishedEdit()) );
+
+}
 //md5: MD5 hash (hex) of the text parameter or the prependtext and appendtext parameters concatenated.
 //If this parameter is set and the hashes don't match,
 //the edit is rejected. This can be used to guard against data corruption.
