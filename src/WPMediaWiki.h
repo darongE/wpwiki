@@ -1,5 +1,5 @@
-#ifndef MEDIAWIKI_H
-#define MEDIAWIKI_H
+#ifndef WPMediaWiki_H
+#define WPMediaWiki_H
 
 
 //Qt lib
@@ -10,35 +10,36 @@
 
 //
 #include "mediawiki_export.h"
-#include "MediaWiki_p.h"
 
-namespace  mediawiki
+
+namespace mediawiki
 {
 
 /**
- * @brief Access Mediawiki API
+ * @brief Access WPMediaWiki API
  */
 
-class MEDIAWIKI_EXPORT MediaWiki
+class MEDIAWIKI_EXPORT WPMediaWiki
 {
+
 public:
 
     /**
-     * @brief Make MediaWiki url api
+     * @brief Make WPMediaWiki url api
      * @param url : wiki url
      * @param customUserAgent : you can specify the user-agent to use
      *        whcih will be cancatenated with the postfix user-agent
      *        else the postfix user-agent is used only
      */
 
-    explicit MediaWiki(const QUrl& url, const QString& customUseragent = QString());
+    explicit WPMediaWiki(const QUrl& url, const QString& customUseragent = QString());
 
 
     /**
-     * @brief Destructs the MediaWiki
+     * @brief Destructs the WPMediaWiki
      */
 
-    ~MediaWiki();
+    ~WPMediaWiki();
 
     /**
      * @brief Returns the url api of the wiki
@@ -64,10 +65,10 @@ public:
 
  private:
 
-    class MediaWikiPrivate;
-    MediaWikiPrivate* const d_wiki_ptr;
+    class WPMediaWikiPrivate;
+    WPMediaWikiPrivate* const d_wiki_ptr;
 
-    //friend class WorkPrivate:
+    friend class WorkPrivate;
 
 };
 
@@ -81,4 +82,4 @@ public:
 
 
 
-#endif // MEDIAWIKI_H
+#endif // WPMediaWiki_H

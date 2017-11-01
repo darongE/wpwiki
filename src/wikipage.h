@@ -1,208 +1,247 @@
-#ifndef WIKIPAGE_H
-#define WIKIPAGE_H
+/** ===========================================================
+ * @file
+ *
+ * This file is a part of KDE project
+ * <a href="https://projects.kde.org/projects/extragear/libs/libmediawiki">libmediawiki</a>
+ *
+ * @date   2011-03-22
+ * @brief  a MediaWiki C++ interface for KDE
+ *
+ * @author Copyright (C) 2011-2012 by Gilles Caulier
+ *         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
+ * @author Copyright (C) 2010 by Joris Munoz
+ *         <a href="mailto:munozjoris at gmail dot com">munozjoris at gmail dot com</a>
+ *
+ * This program is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU General
+ * Public License as published by the Free Software Foundation;
+ * either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * ============================================================ */
+
+#ifndef WIKIWikiPage_H
+#define WIKIWikiPage_H
+
+// Qt includes
 
 #include <QDateTime>
 #include <QUrl>
 
+// Local includes
+
 #include "mediawiki_export.h"
 
-
-namespace  mediawiki
+namespace mediawiki
 {
 
-
+/**
+ * @brief An image info.
+ */
 class MEDIAWIKI_EXPORT WikiPage
 {
+
 public:
 
-
+    /**
+     * @brief Constructs a WikiPage.
+     */
     WikiPage();
 
     /**
-     * @brief Constructs a page from an other page
-     * @param other an other page
+     * @brief Constructs a WikiPage from an other WikiPage.
+     * @param other an other WikiPage
      */
     WikiPage(const WikiPage& other);
 
+    /**
+     * @brief Destructs a WikiPage.
+     */
     ~WikiPage();
 
     /**
-     * @brief Returns true if this instanace and other are equal,else false
-     * @param other instance to compare
-     * @return true if there are equal, else false
+     * @brief Assingning a WikiPage from an other WikiPage.
+     * @param other an other WikiPage
      */
     WikiPage& operator=(WikiPage other);
 
     /**
-     * @brief Set the pageId of the page.
-     * @param id : page id of the page
+     * @brief Returns true if this instance and other are equal, else false.
+     * @param other instance to compare
+     * @return true if there are equal, else false
      */
-
-    void setPageId(quint32 id);
+    bool operator==(const WikiPage& other) const;
 
     /**
-     * @brief Return the page id of the page
-     * @return the page id of the page
+     * @brief Set the WikiPageId of the WikiPage.
+     * @param id the WikiPage id of the WikiPage
      */
-    quint32 pageId() const;
+    void setPageId(unsigned int id);
 
     /**
-     * @brief Set the tile of the page
-     * @param title : title of the page
+     * @brief Return the WikiPage id of the WikiPage.
+     * @return the WikiPage id of the WikiPage
+     */
+    unsigned int pageId() const;
+
+    /**
+     * @brief Set the title of the WikiPage.
+     * @param title the title of the WikiPage
      */
     void setTitle(const QString& title);
 
     /**
-     * @brief  pageTitle
-     * @return title of the page
+     * @brief Return the title of the WikiPage.
+     * @return the title of the WikiPage
      */
     QString pageTitle() const;
 
     /**
-     * @brief Set the namespace of the page
-     * @param ns : namespace of the page
+     * @brief Set the namespace of the WikiPage.
+     * @param ns the namespace of the WikiPage
      */
-    void setNS(quint32 ns) const;
+    void setNs(unsigned int ns) const;
 
     /**
-     * @brief Return the namespace of the page
-     * @return the namespace of the page
+     * @brief Return the namespace of the WikiPage.
+     * @return the namespace of the WikiPage
      */
-    quint32 pageNS() const;
+    unsigned int pageNs() const;
 
     /**
-     * @brief Set the last revision id the page
-     * @param lastRevId the last revision id of the page
+     * @brief Set the last revision id of the WikiPage.
+     * @param lastRevId the last revision id of the WikiPage
      */
-    void setLastRevId(quint32 lastRevId) const;
+    void setLastRevId(unsigned int lastRevId) const;
 
     /**
-     * @brief Return the last revision id of the page
-     * @return the last revision id
+     * @brief Return the last revision id of the WikiPage.
+     * @return the last revision id of the WikiPage
      */
-    quint32 pageLastRevId() const;
+    unsigned int pageLastRevId() const;
 
     /**
-     * @brief Set the number of views of the page
-     * @param counter : no of views of the page
+     * @brief Set the number of views of the WikiPage.
+     * @param counter the number of views of the WikiPage
      */
-    void setCounter(quint32 counter) const;
+    void setCounter(unsigned int counter) const;
 
     /**
-     * @brief Return the number of page views
-     * @return the number of page views
+     * @brief Return the number of views of the WikiPage.
+     * @return the number of views of the WikiPage
      */
-    quint32 pageCounter() const;
+    unsigned int pageCounter() const;
 
     /**
-     * @brief Set the page size
-     * @param length : page size
+     * @brief Set the WikiPage size.
+     * @param length the WikiPage size
      */
-    void setLength(quint32 length) const;
+    void setLength(unsigned int length) const;
 
     /**
-     * @brief Return the page size
-     * @return the page size
+     * @brief Return the WikiPage size.
+     * @return the WikiPage size
      */
-    quint32 pageLength() const;
+    unsigned int pageLength() const;
 
     /**
-     * @brief Set the page token.
-     * @param editToken : page token
+     * @brief Set the WikiPage token.
+     * @param editToken the WikiPage token
      */
     void setEditToken(const QString& editToken);
 
     /**
-     * @brief Return the page token
-     * @return page token
+     * @brief Return the WikiPage token.
+     * @return the WikiPage token
      */
     QString pageEditToken() const;
 
     /**
-     * @brief Set the page ID of the talk page for each
-     *         non-talk page.
-     * @param talkid : page ID of the talk page for each non-talk page
+     * @brief Set the WikiPage ID of the talk WikiPage for each non-talk WikiPage.
+     * @param talkid the WikiPage ID of the talk WikiPage for each non-talk WikiPage
      */
-    void setTalkid(quint32 talkid) const;
+    void setTalkid(unsigned int talkid) const;
 
     /**
-     * @brief Return the page ID of the talk page for each non-talk page.
-     * @return the page ID of the talk page for each non-talk page.
+     * @brief Return the WikiPage ID of the talk WikiPage for each non-talk WikiPage.
+     * @return the WikiPage ID of the talk WikiPage for each non-talk WikiPage
      */
-    quint32 pageTalkid() const;
+    unsigned int pageTalkid() const;
 
     /**
-     * @brief Set the full url of the page
-     * @param fullurl
+     * @brief Set the full url of the WikiPage.
+     * @param fullurl the full url of the WikiPage
      */
     void setFullurl(const QUrl& fullurl);
 
     /**
-     * @brief Return the full url of the page
-     * @return the full url
+     * @brief Return the full url of the WikiPage.
+     * @return the full url of the WikiPage
      */
     QUrl pageFullurl() const;
 
     /**
-     * @brief set the edit url of the page
-     * @param editurl
+     * @brief Set the edit url of the WikiPage.
+     * @param editurl the edit url of the WikiPage
      */
     void setEditurl(const QUrl& editurl);
 
     /**
-     * @brief return the edit url of the page
-     * @return the edit url of the page
+     * @brief Return the edit url of the WikiPage.
+     * @return the edit url of the WikiPage
      */
     QUrl pageEditurl() const;
 
     /**
-     * @brief set the readability of the page.
-     * @param readable the readability of the page
+     * @brief Set the readability of the WikiPage.
+     * @param readable the readability of the WikiPage
      */
     void setReadable(const QString& readable);
 
     /**
-     * @brief pageReadable
-     * @return the readability of the page
+     * @brief Return the readability of the WikiPage.
+     * @return the readability of the WikiPage
      */
     QString pageReadable() const;
 
     /**
-     * @brief Set the text returned by EditForm PreloadText
-     * @param preload the text returned by EditForm PreloadText
+     * @brief Set the text returned by EditFormPreloadText.
+     * @param preload the text returned by EditFormPreloadText
      */
     void setPreload(const QString& preload);
 
     /**
-     * @brief Return the text returned by EditForm PreloadText
-     * @return the text returned by EditForm PreloadText
+     * @brief Return the text returned by EditFormPreloadText.
+     * @return the text returned by EditFormPreloadText
      */
     QString pagePreload() const;
 
     /**
-     * @brief Set the last touched timestamp
+     * @brief Set the last touched timestamp.
      * @param touched the last touched timestamp
      */
     void setTouched(const QDateTime& touched);
 
     /**
-     * @brief Return the last touched timestamp
+     * @brief Return the last touched timestamp.
      * @return the last touched timestamp
      */
     QDateTime pageTouched() const;
 
     /**
-     * @brief set the timestamp when you obtained the edit token
-     * (HH:MM:SS)
-     * @param starttimestamp is obtained from the edit token
+     * @brief Set the timestamp when you obtained the edit token.
+     * @param starttimestamp the timestamp when you obtained the edit token
      */
     void setStarttimestamp(const QDateTime& starttimestamp);
 
-
     /**
-     * @brief get the timestamp when you obtained the edit token
-     * (HH:MM:SS)
-     * @param timestamp is obtained from the edit token
+     * @brief Return the timestamp when you obtained the edit token.
+     * @return the timestamp when you obtained the edit token
      */
     QDateTime pageStarttimestamp() const;
 
@@ -210,9 +249,8 @@ private:
 
     class WikiPagePrivate;
     WikiPagePrivate* const d;
-
 };
 
 } // namespace mediawiki
 
-#endif // WIKIPAGE_H
+#endif // WikiPage_H

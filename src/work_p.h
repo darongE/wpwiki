@@ -1,7 +1,7 @@
-#ifndef MEDIAWIKIWORK_P_H
-#define MEDIAWIKIWORK_P_H
+#ifndef MediaWikiWORK_P_H
+#define MediaWikiWORK_P_H
 
-#include "MediaWiki.h"
+#include "WPMediaWiki.h"
 
 namespace mediawiki {
 
@@ -9,9 +9,9 @@ class WorkPrivate
 {
 public:
 
-    explicit WorkPrivate(MediaWiki& mediawiki)
-        : m_mediawiki(mediawiki),
-          mManager(mediawiki.manager()),
+    explicit WorkPrivate(WPMediaWiki& MediaWiki)
+        : m_MediaWiki(MediaWiki),
+          mManager(MediaWiki.manager()),
           reply(0)
 
     {
@@ -19,11 +19,11 @@ public:
     }
 
 
-    MediaWiki&                    m_mediawiki;
+    WPMediaWiki&                    m_MediaWiki;
     QNetworkAccessManager* const  mManager;
     QNetworkReply*                reply;
 };
 
-} // namespace mediawiki
+} // namespace MediaWiki
 
-#endif // MEDIAWIKIWORK_P_H
+#endif // MediaWikiWORK_P_H

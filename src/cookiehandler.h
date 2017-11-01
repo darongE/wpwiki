@@ -9,6 +9,7 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QDebug>
+#include <QString>
 
 #include <iostream>
 class CookieHandler : public QObject
@@ -16,7 +17,8 @@ class CookieHandler : public QObject
     Q_OBJECT
 
 public:
-    CookieHandler(QObject *parent = nullptr) : QObject(parent)
+
+    CookieHandler()
     {
         mManager = new QNetworkAccessManager(this);
         mManager->setCookieJar(new QNetworkCookieJar(this));
@@ -27,26 +29,32 @@ public:
     void sendSignal(const QUrl &url)
     {
         mUrl = url;
-        connect(mManager, SIGNAL(finished(QNetworkRequest*, QNetworkReply*)),
-                SLOT(replyFinished(QNetworkRequest*, QNetworkReply*)));
+        connect(mManager, SIGNAL(finished(QNetworkReply*)),
+                SLOT(replyFinished(QNetworkReply*)));
     }
 
 
-
-    void sendPostRequest( const QByteArray &data, QString strCase )
+    void sendPostRequest( const QByteArray &data, int icase )
     {
 
         QNetworkRequest r(mUrl);
         r.setRawHeader("User-Agent",data);
 
-        if(strCase == "BROWSE_PAGE")
+
+        if(icase == 1)
         {
            r.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
-           r.setRawHeader( "Cookie", cookie );
-
+           r.setRawHeader("Cookie", data );
+            request = r;
         }
 
+        request = r;
+    }
 
+
+    void setManagerPost()
+    {
+        mManager->post(request, mUrl.toString().toUtf8());
     }
 
 
@@ -64,11 +72,10 @@ public:
     }
 
 
-
-private slots:
+public Q_SLOTS:
 
     //network --> reply
-    void replyFinished(QNetworkRequest* request,QNetworkReply *reply)
+    void replyFinished( QNetworkReply *reply)
     {
 
         if(reply->error() != QNetworkReply::NoError ){
@@ -90,9 +97,11 @@ private slots:
 
     }
 
+
 private:
 
     QNetworkAccessManager *mManager;
+    QNetworkRequest       request;
     QUrl mUrl;
 };
 

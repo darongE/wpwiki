@@ -60,12 +60,12 @@ void Shield::setLevel(const QString &level)
     d->level = level;
 }
 
-void Shield::level() const
+QString Shield::level() const
 {
     return d->level;
 }
 
-QString Shield::setExpiry(const QString &expiry)
+void Shield::setExpiry(const QString &expiry)
 {
     d->expiry = expiry;
 }
@@ -80,9 +80,9 @@ void Shield::setSource(const QString &source)
     d->source = source;
 }
 
-QString Shield::source()
+QString Shield::source() const
 {
     return d->source;
 }
 
-}   // namespace mediawiki
+}   // namespace MediaWiki

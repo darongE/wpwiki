@@ -13,7 +13,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-#include "MediaWiki.h"
+#include "WPMediaWiki.h"
 #include "query.h"
 #include "work_p.h"
 #include "cookiehandler.h"
@@ -32,8 +32,8 @@ public:
 class BrowsePagePrivate : public WorkPrivate
 {
 public:
-    BrowsePagePrivate(MediaWiki& mediawiki)
-          : WorkPrivate(mediawiki)
+    BrowsePagePrivate(WPMediaWiki& MediaWiki)
+          : WorkPrivate(MediaWiki)
 
     {
 
@@ -83,24 +83,21 @@ public:
 
 };
 
-BrowsePage::BrowsePage(MediaWiki& media, QObject* parent)
+BrowsePage::BrowsePage(WPMediaWiki& media, QObject* parent)
           : Work(*new BrowsePagePrivate(media),parent)
 {
-    Q_D(BrowsePage);
-    d->h_cookie = new CookieHandler(this);
+
 }
 
 
 BrowsePage::~BrowsePage()
 {
-   Q_D(BrowsePage);
-   delete d->h_cookie;
 
 }
 void BrowsePage::setUndoAfter(int undoafter)
 {
     Q_D(BrowsePage);
-    d->requestParam[QStringLiteral("undoafter")] = QString::number(undoafter;)
+    d->requestParam[QStringLiteral("undoafter")] = QString::number(undoafter);
 }
 
 void BrowsePage::setUndo(int undo)
@@ -129,28 +126,28 @@ void BrowsePage::setAppendText(const QString &appendText)
 void BrowsePage::setPageName(const QString &pageName)
 {
     Q_D(BrowsePage);
-    d->requestParam[QStringList("title")] = pageName;
+    d->requestParam[QStringLiteral("title")] = pageName;
 
 }
 
 void BrowsePage::setToken(const QString &token)
 {
     Q_D(BrowsePage);
-    d->requestParam[QStringList("token")] = token;
+    d->requestParam[QStringLiteral("token")] = token;
 
 }
 
 void BrowsePage::setBaseTimestamp(const QDateTime &baseTimestamp)
 {
     Q_D(BrowsePage);
-    d->requestParam[QStringLiteral("basetimestamp")] = baseTimestamp;
+    d->requestParam[QStringLiteral("basetimestamp")] =  baseTimestamp.toString(QStringLiteral("yyyy-MM-ddThh:mm:ssZ"));
 
 }
 
 void BrowsePage::setStartTimestamp(const QDateTime &startTimestamp)
 {
     Q_D(BrowsePage);
-    d->requestParam[QStringLiteral("starttimestamp")] = startTimestamp;
+    d->requestParam[QStringLiteral("starttimestamp")] = startTimestamp.toString(QStringLiteral("yyyy-MM-ddThh:mm:ssZ"));
 }
 
 void BrowsePage::setText(const QString &text)
@@ -166,7 +163,7 @@ void BrowsePage::setRecreate(bool recreate)
     if(recreate)
     {
        d->requestParam[QStringLiteral("recreate")] = QStringLiteral("on");
-       d->requestParameter[QStringLiteral("md5")] = QString();
+       d->requestParam[QStringLiteral("md5")] = QString();
     }
 
 
@@ -187,8 +184,8 @@ void BrowsePage::setNocreate(bool norecreate)
     Q_D(BrowsePage);
     if(norecreate)
     {
-        d->requestParameter[QStringLiteral("nocreate")] = QStringLiteral("on");
-        d->requestParameter[QStringLiteral("md5")] = QString();
+        d->requestParam[QStringLiteral("nocreate")] = QStringLiteral("on");
+        d->requestParam[QStringLiteral("md5")] = QString();
     }
 }
 
@@ -196,15 +193,15 @@ void BrowsePage::setMinor(bool minor)
 {
     Q_D(BrowsePage);
     if(minor)
-        d->requestParameter[QStringLiteral("minor")] = QStringLiteral("on");
+        d->requestParam[QStringLiteral("minor")] = QStringLiteral("on");
     else
-        d->requestParameter[QStringLiteral("notminor")] = QStringLiteral("on");
+        d->requestParam[QStringLiteral("notminor")] = QStringLiteral("on");
 }
 
 void BrowsePage::setSection(const QString &section)
 {
     Q_D(BrowsePage);
-    d->requestParameter[QStringLiteral("section")] = section;
+    d->requestParam[QStringLiteral("section")] = section;
 }
 
 void BrowsePage::setSummary(const QString &summary)
@@ -237,17 +234,19 @@ void BrowsePage::setWatchList(BrowsePage::Watchlist watchlist)
 void BrowsePage::start()
 {
     Q_D(BrowsePage);
-    Query* p_query = new Query(d->m_mediawiki, this);
+    Query* p_query = new Query(d->m_MediaWiki, this);
+
+            //= new Query(d->m_MediaWiki, this);
     p_query->setPageName(d->requestParam[QStringLiteral("title")]);
     p_query->setToken(QStringLiteral("edit"));
-    connect(info, SIGNAL(getPage(WikiPage)),
+    connect(p_query, SIGNAL(getPage(WikiPage)),
             this, SLOT(sendRequest(WikiPage)));
 
     p_query->start();
 
 }
 //e.g
-//www.mediawiki.org/w/index.php
+//www.MediaWiki.org/w/index.php
 //?title=Project:Sandbox
 //&action=edit
 void BrowsePage::sendRequest(WikiPage wiki_page)
@@ -255,7 +254,7 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
     Q_D(BrowsePage);
     d->requestParam[QStringLiteral("token")] = wiki_page.pageEditToken();
 
-    QUrl    url = d->m_mediawiki.url();
+    QUrl    url = d->m_MediaWiki.url();
     QUrlQuery url_query;
     url_query.addQueryItem(QStringLiteral("format"),QStringLiteral("xml"));
     url_query.addQueryItem(QStringLiteral("action"), QStringLiteral("edit"));
@@ -275,7 +274,7 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
 
         // prependtext & appendtext : text param
         QByteArray hash = QCryptographicHash::hash(text.toUtf8(),QCryptographicHash::Md5);
-        d->requestParam[QStringLiteral("md5")] = QString::fromLatin1(hash.toText());
+        d->requestParam[QStringLiteral("md5")] = QString::fromLatin1(hash.toHex());
     }
 
 
@@ -295,13 +294,15 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
     url.setQuery(url_query);
 
     d->baseUrl = url;
-    d->h_cookie->sendPostRequest(d->m_mediawiki.userAgent().toUtf8(),"BROWSE_PAGE" );
-    d->reply = d->cookie_handler->getReply();
+    d->h_cookie->sendPostRequest(d->m_MediaWiki.userAgent().toUtf8(),1 );
+   // d->reply = d->h_cookie->getReply();
 
     setPercent(25);
 
     // Send the request
-    d->reply = d->manager->post( request, url.toString().toUtf8() );
+    d->h_cookie->setManagerPost();
+    d->reply = d->h_cookie->getReply();
+
 
     connectReply();
     connect( d->reply, SIGNAL(finished()),
@@ -408,11 +409,11 @@ void BrowsePage::finishedCaptcha(const QString& captcha)
     url.setQuery(query);
     QString data = url.toString();
     QByteArray byte_cookie;
-    QList<QNetworkCookie> mediawiki_cookies = d->mManager->cookieJar()->cookiesForUrl(d->m_mediawiki.url());
+    QList<QNetworkCookie> MediaWiki_cookies = d->mManager->cookieJar()->cookiesForUrl(d->m_MediaWiki.url());
 
-    for(int i = 0; i < mediawiki_cookies.size(); ++i)
+    for(int i = 0; i < MediaWiki_cookies.size(); ++i)
     {
-        byte_cookie += mediawiki_cookies.at(i).toRawForm(QNetworkCookie::NameAndValueOnly);
+        byte_cookie += MediaWiki_cookies.at(i).toRawForm(QNetworkCookie::NameAndValueOnly);
         byte_cookie += ';';
 
 
@@ -420,7 +421,7 @@ void BrowsePage::finishedCaptcha(const QString& captcha)
 
     //set the request
     QNetworkRequest request( url);
-    request.setRawHeader("User-Agent", d->m_mediawiki.userAgent().toUtf8());
+    request.setRawHeader("User-Agent", d->m_MediaWiki.userAgent().toUtf8());
     request.setRawHeader("Cookie", byte_cookie);
     request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
     //send the request

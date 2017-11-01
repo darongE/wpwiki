@@ -1,23 +1,28 @@
 
+
 #include "wikipage.h"
 
+// C++ includes
+
 #include <algorithm>
-#include <QUrl>
 
+// Qt includes
 
-namespace  mediawiki
+#include <QtCore/QUrl>
+
+namespace mediawiki
 {
 
 class Q_DECL_HIDDEN WikiPage::WikiPagePrivate
 {
 public:
 
-    quint32      m_pageid;
-    quint32      m_ns;
-    quint32      m_lastrevid;
-    quint32      m_counter;
-    quint32      m_length;
-    quint32      m_talkid;
+    unsigned int m_pageid;
+    unsigned int m_ns;
+    unsigned int m_lastrevid;
+    unsigned int m_counter;
+    unsigned int m_length;
+    unsigned int m_talkid;
     QString      m_edittoken;
     QString      m_title;
     QString      m_readable;
@@ -26,14 +31,11 @@ public:
     QUrl         m_editurl;
     QDateTime    m_touched;
     QDateTime    m_starttimestamp;
-
 };
 
-
 WikiPage::WikiPage()
-        :d(new WikiPagePrivate())
+    :d(new WikiPagePrivate())
 {
-
 }
 
 WikiPage::~WikiPage()
@@ -41,9 +43,8 @@ WikiPage::~WikiPage()
     delete d;
 }
 
-WikiPage::WikiPage(const WikiPage &other)
-                : d(new WikiPagePrivate(*(other.d)))
-
+WikiPage::WikiPage( const WikiPage& other)
+        : d(new WikiPagePrivate(*(other.d)))
 {
 }
 
@@ -57,7 +58,7 @@ bool WikiPage::operator==(const WikiPage& other) const
 {
     return pageId()             == other.pageId()        &&
            pageTitle()          == other.pageTitle()     &&
-           pageNS()             == other.pageNS()        &&
+           pageNs()             == other.pageNs()        &&
            pageLastRevId()      == other.pageLastRevId() &&
            pageCounter()        == other.pageCounter()   &&
            pageLength()         == other.pageLength()    &&
@@ -69,24 +70,21 @@ bool WikiPage::operator==(const WikiPage& other) const
            pagePreload()        == other.pagePreload()   &&
            pageTouched()        == other.pageTouched()   &&
            pageStarttimestamp() == other.pageStarttimestamp();
-
-
 }
 
-void WikiPage::setPageId(quint32 id)
+void WikiPage::setPageId(unsigned int id)
 {
-   d->m_pageid = id;
-
+    d->m_pageid=id;
 }
 
-quint32 WikiPage::pageId() const
+unsigned int WikiPage::pageId() const
 {
     return d->m_pageid;
 }
 
 void WikiPage::setTitle(const QString& title)
 {
-    d->m_title = title;
+    d->m_title=title;
 }
 
 QString WikiPage::pageTitle() const
@@ -94,49 +92,49 @@ QString WikiPage::pageTitle() const
     return d->m_title;
 }
 
-void WikiPage::setNS(quint32 ns) const
+void WikiPage::setNs(unsigned int ns) const
 {
-   d->m_ns = ns;
+    d->m_ns=ns;
 }
 
-quint32 WikiPage::pageNS() const
+unsigned int WikiPage::pageNs() const
 {
     return d->m_ns;
 }
 
-void WikiPage::setLastRevId(quint32 lastRevId) const
+void WikiPage::setLastRevId(unsigned int lastRevId) const
 {
-    d->m_lastrevid = lastRevId;
+    d->m_lastrevid=lastRevId;
 }
 
-quint32 WikiPage::pageLastRevId() const
+unsigned int WikiPage::pageLastRevId() const
 {
     return d->m_lastrevid;
 }
 
-void WikiPage::setCounter(quint32 counter) const
+void WikiPage::setCounter(unsigned int counter) const
 {
-    d->m_counter = counter;
+    d->m_counter=counter;
 }
 
-quint32 WikiPage::pageCounter() const
+unsigned int WikiPage::pageCounter() const
 {
     return d->m_counter;
 }
 
-void WikiPage::setLength(quint32 length) const
+void WikiPage::setLength(unsigned int length) const
 {
-    d->m_length = length;
+     d->m_length=length;
 }
 
-quint32 WikiPage::pageLength() const
+unsigned int WikiPage::pageLength() const
 {
-    return d->m_length;
+     return d->m_length;
 }
 
-void WikiPage::setEditToken(const QString &editToken)
+void WikiPage::setEditToken(const QString& editToken)
 {
-    d->m_edittoken = editToken;
+    d->m_edittoken=editToken;
 }
 
 QString WikiPage::pageEditToken() const
@@ -144,9 +142,19 @@ QString WikiPage::pageEditToken() const
     return d->m_edittoken;
 }
 
-void WikiPage::setFullurl(const QUrl &fullurl)
+void WikiPage::setTalkid(unsigned int talkid) const
 {
-    d->m_fullurl = fullurl;
+     d->m_talkid=talkid;
+}
+
+unsigned int WikiPage::pageTalkid() const
+{
+     return d->m_talkid;
+}
+
+void WikiPage::setFullurl(const QUrl& fullurl)
+{
+    d->m_fullurl=fullurl;
 }
 
 QUrl WikiPage::pageFullurl() const
@@ -154,26 +162,54 @@ QUrl WikiPage::pageFullurl() const
     return d->m_fullurl;
 }
 
-void WikiPage::setReadable(const QString &readable)
+void WikiPage::setEditurl(const QUrl& editurl)
 {
-    d->m_readable = readable;
+    d->m_editurl=editurl;
 }
 
+QUrl WikiPage::pageEditurl() const
+{
+    return d->m_editurl;
+}
 
-void WikiPage::pageReadable() const
+void WikiPage::setReadable(const QString& readable)
+{
+    d->m_readable=readable;
+}
+
+QString WikiPage::pageReadable() const
 {
     return d->m_readable;
 }
 
-void WikiPage::setPreload(const QString &preload)
+void WikiPage::setPreload(const QString& preload)
 {
-    d->m_preload = preload;
+    d->m_preload=preload;
 }
 
 QString WikiPage::pagePreload() const
 {
+    return d->m_preload;
+}
+
+void WikiPage::setTouched(const QDateTime& touched)
+{
+    d->m_touched=touched;
+}
+
+QDateTime WikiPage::pageTouched() const
+{
     return d->m_touched;
 }
 
+void WikiPage::setStarttimestamp(const QDateTime& starttimestamp)
+{
+    d->m_starttimestamp=starttimestamp;
+}
 
-} // namespace mediawiki
+QDateTime WikiPage::pageStarttimestamp() const
+{
+    return d->m_starttimestamp;
+}
+
+} // namespace mediawiki;

@@ -16,7 +16,7 @@
 namespace  mediawiki
 {
 
-class MediaWiki;
+class WPMediaWiki;
 class QueryPrivate;
 
 class MEDIAWIKI_EXPORT Query : public Work
@@ -30,11 +30,11 @@ public:
 
     /**
      * @brief Query
-     * @param mediawiki work
+     * @param MediaWiki work
      * @param parent : QObject parent
      */
 
-    explicit Query(MediaWiki& mediawiki,QObject* const parent() = 0 );
+    explicit Query(WPMediaWiki& MediaWiki,QObject* const parent = 0 );
 
 
     virtual ~Query();
@@ -90,5 +90,5 @@ private Q_SLOTS:
 
 
 
-}  //namespace mediawiki
+}  //namespace MediaWiki
 #endif // QUERY_H

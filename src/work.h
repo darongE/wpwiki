@@ -1,5 +1,5 @@
-#ifndef MEDIAWIKIWORK_H
-#define MEDIAWIKIWORK_H
+#ifndef MediaWikiWORK_H
+#define MediaWikiWORK_H
 
 //KDE includes
 
@@ -10,7 +10,7 @@
 
 namespace  mediawiki {
 
-class MediaWiki;
+class WPMediaWiki;
 class WorkPrivate;
 
 /**
@@ -80,8 +80,8 @@ class WorkPrivate;
 
  };
 
-}  //namespace mediawiki
+}  //namespace MediaWiki
 
 
 
-#endif // MEDIAWIKIWORK_H
+#endif // MediaWikiWORK_H

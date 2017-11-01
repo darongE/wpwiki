@@ -1,5 +1,5 @@
-#ifndef MEDIAWIKI_BROWSEPAGE_H
-#define MEDIAWIKI_BROWSEPAGE_H
+#ifndef MediaWiki_BROWSEPAGE_H
+#define MediaWiki_BROWSEPAGE_H
 
 // Qt Lib
 
@@ -17,7 +17,7 @@
 namespace mediawiki
 {
 
-class MediaWiki;
+class WPMediaWiki;
 class BrowsePagePrivate;
 
 
@@ -65,7 +65,7 @@ public:
      * @param parent
      */
 
-    explicit BrowsePage(MediaWiki& media, QObject* pa = 0);
+    explicit BrowsePage(WPMediaWiki& media, QObject* parent = 0);
 
     /**
      * @brief Destorys the Browsepage work
@@ -208,5 +208,5 @@ private Q_SLOTS:
 };
 
 
-}  // namespace mediawiki
+}  // namespace MediaWiki
 #endif // BROWSEPAGE_H
