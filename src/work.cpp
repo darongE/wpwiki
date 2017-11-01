@@ -2,7 +2,7 @@
 
 #include <QNetworkReply>
 
-#include "MediaWiki.h"
+#include "WPMediaWiki.h"
 #include "work_p.h"
 
 // About D-pointer
@@ -59,4 +59,4 @@ void Work::processUploadProgress(qint64 bytesReceived, qint64 bytesTotal)
 
 
 
-} //namespace mediawiki
+} //namespace MediaWiki

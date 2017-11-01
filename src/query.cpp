@@ -13,7 +13,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
-#include "MediaWiki.h"
+#include "WPMediaWiki.h"
 #include "work_p.h"
 
 
@@ -23,8 +23,8 @@ class QueryPrivate : public WorkPrivate
 {
 public:
 
-    QueryPrivate(MediaWiki& mediawiki)
-        : WorkPrivate(mediawiki)
+    QueryPrivate(WPMediaWiki& MediaWiki)
+        : WorkPrivate(MediaWiki)
     {
 
 
@@ -38,18 +38,15 @@ public:
 };
 
 
-Query::Query(MediaWiki& mediawiki, QObject* const parent)
-     : Work(*new Query(mediawiki), parent)
+Query::Query(WPMediaWiki& MediaWiki, QObject* const parent)
+     : Work(*new QueryPrivate(MediaWiki), parent)
 {
 
-   Q_D(Query);
-   d->cookie_handler = new CookieHandler(this);
 }
 
 Query::~Query()
 {
-    Q_D(Query);
-    delete d->cookie_handler;
+
 }
 
 void Query::setPageName(const QString &title)
@@ -70,7 +67,7 @@ void Query::setPageId(quint32 id)
     d->requestParam[QStringLiteral("pageids")] = QString::number(id);
 }
 
-void Query::setRevisionId(unsigned int id)
+void Query::setRevisionID(unsigned int id)
 {
     Q_D(Query);
     d->requestParam[QStringLiteral("revids")] = QString::number(id);
@@ -83,12 +80,12 @@ void Query::start()
 
 //media wiki api form
 //api.php?action=query&titles=Albert%20Einstein&prop=info&format=xmlfm
-//you can see : https://www.mediawiki.org/wiki/API:Data_formats
+//you can see : https://www.MediaWiki.org/wiki/API:Data_formats
 void Query::SendRequest()
 {
     Q_D(Query);
 
-    QUrl url = d->m_mediawiki.url();
+    QUrl url = d->m_MediaWiki.url();
     QUrlQuery query;
 
 
@@ -109,9 +106,11 @@ void Query::SendRequest()
 
     // this part will handle in Cookiehandler.h
     d->cookie_handler->sendSignal(url);
-    d->cookie_handler->sendPostRequest(d->m_mediawiki.userAgent().toUtf8());
+    d->cookie_handler->sendPostRequest(d->m_MediaWiki.userAgent().toUtf8(),0);
 
     d->reply = d->cookie_handler->getReply();
+
+    connectReply();
 
      connect(d->reply, SIGNAL(finished()), this, SLOT(ProcessReply()));
   }
@@ -146,13 +145,16 @@ void Query::ProcessReply()
                 {
                     d->wiki_page.setPageId(attrs.value(QStringLiteral("pageid")).toString().toUInt());
                     d->wiki_page.setTitle(attrs.value(QStringLiteral("title")).toString());
-                    d->wiki_page.setNS(attrs.value(QStringLiteral("ns")).toString().toUInt());
-                    d->wiki_page.setTouched(QDateTime::fromString(attrs.value(QStringLiteral)));
-                    d->wiki_page.setTouched(QDateTime::fromString(attrs.value(QStringLiteral("touched")).toString(), QStringLiteral("yyyy'-'MM'-'dd'T'hh':'mm':'ss'Z'")));
+                    d->wiki_page.setNs(attrs.value(QStringLiteral("ns")).toString().toUInt());
+                    d->wiki_page.setTouched(QDateTime::fromString(attrs.value(QStringLiteral("touched")).toString(),
+                                                                  QStringLiteral("yyyy'-'MM'-'dd'T'hh':'mm':'ss'Z'")));
+
                     d->wiki_page.setLastRevId(attrs.value(QStringLiteral("lastrevid")).toString().toUInt());
                     d->wiki_page.setCounter(attrs.value(QStringLiteral("counter")).toString().toUInt());
                     d->wiki_page.setLength(attrs.value(QStringLiteral("length")).toString().toUInt());
-                    d->wiki_page.setStarttimestamp(QDateTime::fromString(attrs.value(QStringLiteral("starttimestamp")).toString(), QStringLiteral("yyyy'-'MM'-'dd'T'hh':'mm':'ss'Z'")));
+                    d->wiki_page.setStarttimestamp(QDateTime::fromString(attrs.value(QStringLiteral("starttimestamp")).toString(),
+                                                                         QStringLiteral("yyyy'-'MM'-'dd'T'hh':'mm':'ss'Z'")));
+
                     d->wiki_page.setEditToken(attrs.value(QStringLiteral("edittoken")).toString());
                     d->wiki_page.setTalkid(attrs.value(QStringLiteral("talkid")).toString().toUInt());
                     d->wiki_page.setFullurl(QUrl(attrs.value(QStringLiteral("fullurl")).toString()));
@@ -185,10 +187,10 @@ void Query::ProcessReply()
                     }
 
                     Shield m_shield;
-                    v_shield.setExpiry(expiry);
-                    v_shield.setLevel(level);
-                    v_shield.setType(type);
-                    v_shield.setSource(source);
+                    m_shield.setExpiry(expiry);
+                    m_shield.setLevel(level);
+                    m_shield.setType(type);
+                    m_shield.setSource(source);
                     v_shield.push_back(m_shield);
                 }
 
@@ -219,7 +221,7 @@ void Query::ProcessReply()
     emitResult();
 }
 
-}  //namespace mediawiki
+}  //namespace MediaWiki
 
 
 

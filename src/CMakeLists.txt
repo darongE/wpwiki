@@ -2,23 +2,23 @@
 
 set(MediaWiki_SRCS
     browsepage.cpp
-    Work.cpp
-    MediaWiki.cpp
-    Query.cpp
-    WikiPage.cpp
+    work.cpp
+    WPMediaWiki.cpp
+    query.cpp
+    wikipage.cpp
     shield.cpp
     )
 
 
 
-set(WPMEDIAWIKI_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
+set(WPMediaWiki_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
 
 add_library(WPMediaWiki ${MediaWiki_SRCS})
 generate_export_header(WPMediaWiki BASE_NAME MediaWiki)
 
 add_library(WP::MediaWiki ALIAS WPMediaWiki)
 
-target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${WPMEDIAWIKI_INCLUDE_INSTALL_DIR}/MediaWiki>")
+target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${WPMediaWiki_INCLUDE_INSTALL_DIR}/MediaWiki>")
 
 
 target_link_libraries(WPMediaWiki
@@ -29,19 +29,19 @@ target_link_libraries(WPMediaWiki
 )
 
 set_target_properties(WPMediaWiki
-    PROPERTIES VERSION ${MediaWiki_VERSION_STRING}
+    PROPERTIES VERSION ${WPWIKI_VERSION_STRING}
     SOVERSION ${MediaWiki_SOVERSION}
-    EXPORT_NAME "MediaWiki"
+    EXPORT_NAME "WPMediaWiki"
 )
 
 ecm_generate_headers(
                           WPMediaWiki_HEADERS
                           HEADER_NAMES
                           BrowsePage
-                          Work
-                          MediaWiki
-                          Query
-                          WikiPage
+                          work
+                          WPMediaWiki
+                          query
+                          wikipage
                           shield
                           cookiehandler
                           REQUIRED_HEADERS MediaWiki_HEADERS
@@ -53,10 +53,10 @@ install(TARGETS WPMediaWiki
         ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
-            ${CMAKE_CURRENT_BINARY_DIR}/mediawiki_export.h
+            ${CMAKE_CURRENT_BINARY_DIR}/MediaWiki_export.h
             ${MediaWiki_HEADERS}
             ${WPMediaWiki_HEADERS}
-        DESTINATION ${WPMEDIAWIKI_INCLUDE_INSTALL_DIR}/MediaWiki
+        DESTINATION ${WPMediaWiki_INCLUDE_INSTALL_DIR}/MediaWiki
         COMPONENT Devel)
 
 include(ECMGeneratePriFile)
