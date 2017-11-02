@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 
 find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Network Widgets)
-find_package(WPMediaWiki ${KF5_VERSION} REQUIRED)
+find_package(WPMediaWiki)
 find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED NO_MODULE)
 
 qt5_wrap_ui(WikiSearch UI_FILES mainwindow.ui)
