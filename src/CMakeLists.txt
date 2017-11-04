@@ -15,16 +15,9 @@ add_library(WP::MediaWiki ALIAS WPMediaWiki)
 
 #target_include_directories(WPMediaWiki PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}>")
 
+#set(WPMediaWiki_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
+
 target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/MediaWiki>")
-
-set(WPMediaWiki_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
-
-add_library(WPMediaWiki ${MediaWiki_SRCS})
-generate_export_header(WPMediaWiki BASE_NAME MediaWiki)
-
-add_library(WP::MediaWiki ALIAS WPMediaWiki)
-
-target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${WPMediaWiki_INCLUDE_INSTALL_DIR}/MediaWiki>")
 
 
 target_link_libraries(WPMediaWiki
@@ -39,17 +32,17 @@ set_target_properties(WPMediaWiki
     SOVERSION ${WPWIKI_SOVERSION}
     EXPORT_NAME "MediaWiki"
 )
-ecm_generate_headers(
-                          MediaWiki_CamelCase_HEADERS
-                          HEADER_NAMES
-                          BrowsePage
-                          work
-                          WPMediaWiki
-                          query
-                          wikipage
-                          shield
-                          cookiehandler
-                          REQUIRED_HEADERS MediaWiki_HEADERS)
+ecm_generate_headers( MediaWiki_CamelCase_HEADERS
+
+                      HEADER_NAMES
+                      BrowsePage
+                      work
+                      WPMediaWiki
+                      query
+                      wikipage
+                      shield
+                      cookiehandler
+                      REQUIRED_HEADERS MediaWiki_HEADERS)
 
 # Install files
 install(TARGETS WPMediaWiki
