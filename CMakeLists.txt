@@ -68,8 +68,8 @@ install(EXPORT WPMediaWikiTargets
         NAMESPACE WP::)
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/mediawiki_version.h"
-        DESTINATION "${KF5_INCLUDE_INSTALL_DIR}"
-=======
+        DESTINATION "${KF5_INCLUDE_INSTALL_DIR}")
+
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/wpwiki_version.h"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel)
