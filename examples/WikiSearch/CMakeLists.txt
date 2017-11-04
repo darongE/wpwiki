@@ -25,10 +25,6 @@ add_executable(WikiSearch
 
 set(CMAKE_AUTOMOC ON)
 
-add_executable(
-    WikiSearch
-    mainwindow.cpp
-)
 
 target_link_libraries(WikiSearch
 
@@ -41,4 +37,3 @@ target_link_libraries(WikiSearch
 )
 
 set_target_properties(WikiSearch PROPERTIES COMPILE_FLAGS "-std=c++11")
-
