@@ -30,8 +30,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMessageBox>
+#include <QMainWindow>
+#include <QMessageBox>
 
 #include <MediaWiki/Edit>
 #include <MediaWiki/MediaWiki>
@@ -60,6 +60,19 @@ public:
     explicit MainWindow(QWidget* const parent = 0);
     ~MainWindow();
 
+
+private slots:
+
+    void on_plainTextEdit_textChanged();
+    void on_mPageEdit_textChanged(const QString &arg1);
+    void on_mWikiEdit_textChanged(const QString &arg1);
+    void on_pushButton1_clicked();
+    void on_pushButton2_clicked();
+
+//    void loginHandle(KJob* mlogin);
+//    void revisionHandle(const QList<Revision>& revisions);
+//    void editError(KJob* job);
+//    void revisionError(KJob* job);
 
 private:
 
