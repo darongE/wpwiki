@@ -34,7 +34,7 @@ include(FeatureSummary)
 
 ecm_setup_version(${LIBMEDIAWIKI_LIBVERSION}
     VARIABLE_PREFIX MEDIAWIKI
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/wpwiki_version.h"
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/mediawiki_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/WPMediaWikiConfigVersion.cmake"
 )
 
@@ -44,6 +44,7 @@ find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED)
 
 # Subdirectories
 add_subdirectory(src)
+#add_subdirectory(tests)
 
 # Create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/WPMediaWiki")
@@ -60,15 +61,18 @@ install(FILES
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel)
 
+
 install(EXPORT WPMediaWikiTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         FILE WPMediaWikiTargets.cmake
         NAMESPACE WP::)
 
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/mediawiki_version.h"
+        DESTINATION "${KF5_INCLUDE_INSTALL_DIR}"
+=======
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/wpwiki_version.h"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel)
-
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
