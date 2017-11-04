@@ -46,6 +46,11 @@ namespace Ui
 
 using namespace mediawiki;
 
+
+namespace Ui {
+class MainWindow;
+}
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -60,6 +65,13 @@ private:
 
     Ui::MainWindow* ui;
     MediaWiki*      mediawiki;
+
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
+private:
+    Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H

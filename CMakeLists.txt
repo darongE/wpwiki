@@ -10,7 +10,7 @@ set(REQUIRED_QT_VERSION "5.2.0")
 
 # Used to set library's SONAME, change first digit on API/ABI break
 set(LIBMEDIAWIKI_LIBVERSION         "1.0.0")
-#set(WPMEDIAWIKI_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
+set(WPMEDIAWIKI_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
 
 cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
 
@@ -69,6 +69,9 @@ install(EXPORT WPMediaWikiTargets
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/mediawiki_version.h"
         DESTINATION "${KF5_INCLUDE_INSTALL_DIR}"
+=======
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/wpwiki_version.h"
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel)
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

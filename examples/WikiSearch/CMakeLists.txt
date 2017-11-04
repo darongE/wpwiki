@@ -1,3 +1,4 @@
+
 #
 # Copyright (c) 2010-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
@@ -28,6 +29,13 @@ add_executable(WikiSearch
               ${WikiSearch_ui}
               ${WikiSearch_src})
 
+set(CMAKE_AUTOMOC ON)
+
+add_executable(
+    WikiSearch
+    mainwindow.cpp
+)
+
 target_link_libraries(WikiSearch
 
     PRIVATE
@@ -38,16 +46,5 @@ target_link_libraries(WikiSearch
         KF5::CoreAddons
 )
 
-
-
 set_target_properties(WikiSearch PROPERTIES COMPILE_FLAGS "-std=c++11")
-
-
-
-
-
-
-
-
-
 

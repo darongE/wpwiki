@@ -1,14 +1,11 @@
 
-
 set(mediawiki_SRCS
     browsepage.cpp
     work.cpp
     WPMediaWiki.cpp
     query.cpp
     wikipage.cpp
-    shield.cpp
-    )
-
+    shield.cpp  )
 
 
 add_library(WPMediaWiki ${mediawiki_SRCS})
@@ -19,6 +16,15 @@ add_library(WP::MediaWiki ALIAS WPMediaWiki)
 #target_include_directories(WPMediaWiki PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}>")
 
 target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${KF5_INCLUDE_INSTALL_DIR}/MediaWiki>")
+
+set(WPMediaWiki_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
+
+add_library(WPMediaWiki ${MediaWiki_SRCS})
+generate_export_header(WPMediaWiki BASE_NAME MediaWiki)
+
+add_library(WP::MediaWiki ALIAS WPMediaWiki)
+
+target_include_directories(WPMediaWiki INTERFACE "$<INSTALL_INTERFACE:${WPMediaWiki_INCLUDE_INSTALL_DIR}/MediaWiki>")
 
 
 target_link_libraries(WPMediaWiki
@@ -33,7 +39,6 @@ set_target_properties(WPMediaWiki
     SOVERSION ${WPWIKI_SOVERSION}
     EXPORT_NAME "MediaWiki"
 )
-
 ecm_generate_headers(
                           MediaWiki_CamelCase_HEADERS
                           HEADER_NAMES
@@ -44,12 +49,7 @@ ecm_generate_headers(
                           wikipage
                           shield
                           cookiehandler
-                          REQUIRED_HEADERS MediaWiki_HEADERS
-)
-
-
-
-#set(WPMEDIAWIKI_INCLUDE_INSTALL_DIR ${CMAKECONFIG_INSTALL_DIR})
+                          REQUIRED_HEADERS MediaWiki_HEADERS)
 
 # Install files
 install(TARGETS WPMediaWiki
@@ -61,8 +61,8 @@ install(FILES
             ${CMAKE_CURRENT_BINARY_DIR}/mediawiki_export.h
             ${MediaWiki_HEADERS}
             ${MediaWiki_CamelCase_HEADERS}
-        DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/MediaWiki
-        COMPONENT Devel)
+            DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/MediaWiki
+            COMPONENT Devel)
 
 include(ECMGeneratePriFile)
 
