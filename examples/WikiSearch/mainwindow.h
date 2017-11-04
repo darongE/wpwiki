@@ -66,11 +66,6 @@ private:
     Ui::MainWindow* ui;
     MediaWiki*      mediawiki;
 
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-
-private:
-    Ui::MainWindow *ui;
 
 };
 

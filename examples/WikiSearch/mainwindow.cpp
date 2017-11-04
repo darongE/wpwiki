@@ -34,9 +34,6 @@ MainWindow::MainWindow(QWidget* const parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow),
       mediawiki(0)
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
