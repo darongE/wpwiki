@@ -28,8 +28,8 @@ target_link_libraries(WPMediaWiki
 )
 
 set_target_properties(WPMediaWiki
-    PROPERTIES VERSION ${WPWIKI_VERSION_STRING}
-    SOVERSION ${WPWIKI_SOVERSION}
+    PROPERTIES VERSION ${MEDIAWIKI_VERSION_STRING}
+    SOVERSION ${MEDIAWIKI_VERSION}
     EXPORT_NAME "MediaWiki"
 )
 ecm_generate_headers( MediaWiki_CamelCase_HEADERS

@@ -31,12 +31,13 @@
 
 // Local includes
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
+#include "wikiform.h"
 
 int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    WikiForm w;
     w.show();
 
     return a.exec();
