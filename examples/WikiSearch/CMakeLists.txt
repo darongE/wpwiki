@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 2.8.12)
 
 project(WikiSearch)
@@ -7,12 +6,12 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Core Network Widgets)
 find_package(KF5MediaWiki ${KF5_VERSION} REQUIRED)
 find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED NO_MODULE)
 
-set (WikiSearch_src ${PROJECT_SOURCE_DIR}/mainwindow.cpp)
-set (WikiSearch_hdr ${PROJECT_SOURCE_DIR}/mainwindow.h)
-set (WikiSearch_ui  ${PROJECT_SOURCE_DIR}/mainwindow.ui)
+set (WikiSearch_src ${PROJECT_SOURCE_DIR}/wikiform.cpp)
+set (WikiSearch_hdr ${PROJECT_SOURCE_DIR}/wikiform.h)
+set (WikiSearch_ui  ${PROJECT_SOURCE_DIR}/wikiform.ui)
 set (WikiSearchBin_src ${PROJECT_SOURCE_DIR}/main.cpp)
 set (CMAKE_AUTOMOC ON)
-
+set (CMAKE_AUTOUIC ON)
 
 qt5_wrap_cpp(WikiSearchLib_hdr_moc ${WikiSearchLib_hdr})
 qt5_wrap_ui (WikiSearchLib_ui_moc  ${WikiSearchLib_ui})
@@ -23,7 +22,7 @@ add_executable(WikiSearch
               ${WikiSearch_ui}
               ${WikiSearch_src})
 
-set(CMAKE_AUTOMOC ON)
+
 
 
 target_link_libraries(WikiSearch
