@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="wpwiki"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\usr\local\share\ECM\;CMake Files\..\..\..\..\usr\local\share\ECM\cmake\;CMake Files\..\..\..\..\usr\local\share\ECM\modules\;CMake Files\..\..\..\..\usr\local\share\ECM\kde-modules\;CMake Files\..\..\..\..\usr\local\Cellar\;CMake Files\..\..\..\..\usr\local\Cellar\qt\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5\;CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Network\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\;CMake Files\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="fetch-translations">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 fetch-translations"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WPMediaWiki">
+				<Option output="/Users/yoshimi/Pictures/wpwiki/src/libWPMediaWiki.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_LARGEFILE64_SOURCE"/>
+					<Add option="-D_DARWIN_C_SOURCE"/>
+					<Add option="-DQT_MAC_USE_COCOA"/>
+					<Add option="-DQT_NO_CAST_TO_ASCII"/>
+					<Add option="-DQT_NO_CAST_FROM_ASCII"/>
+					<Add option="-DQT_NO_URL_CAST_FROM_STRING"/>
+					<Add option="-DQT_NO_CAST_FROM_BYTEARRAY"/>
+					<Add option="-DQT_NO_SIGNALS_SLOTS_KEYWORDS"/>
+					<Add option="-DQT_USE_FAST_OPERATOR_PLUS"/>
+					<Add option="-DQT_USE_QSTRINGBUILDER"/>
+					<Add option="-DQT_STRICT_ITERATORS"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NETWORK_LIB"/>
+					<Add option="-DKCOREADDONS_LIB"/>
+					<Add directory="/Users/yoshimi/Pictures/wpwiki/src"/>
+					<Add directory="/Users/yoshimi/Pictures/wpwiki/src/WPMediaWiki_autogen/include"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtCore.framework"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtCore.framework/Headers"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/./mkspecs/macx-clang"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtNetwork.framework"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtNetwork.framework/Headers"/>
+					<Add directory="/usr/local/include/KF5/KCoreAddons"/>
+					<Add directory="/usr/local/include/KF5"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 WPMediaWiki"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WPMediaWiki/fast">
+				<Option output="/Users/yoshimi/Pictures/wpwiki/src/libWPMediaWiki.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki/src"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-D_LARGEFILE64_SOURCE"/>
+					<Add option="-D_DARWIN_C_SOURCE"/>
+					<Add option="-DQT_MAC_USE_COCOA"/>
+					<Add option="-DQT_NO_CAST_TO_ASCII"/>
+					<Add option="-DQT_NO_CAST_FROM_ASCII"/>
+					<Add option="-DQT_NO_URL_CAST_FROM_STRING"/>
+					<Add option="-DQT_NO_CAST_FROM_BYTEARRAY"/>
+					<Add option="-DQT_NO_SIGNALS_SLOTS_KEYWORDS"/>
+					<Add option="-DQT_USE_FAST_OPERATOR_PLUS"/>
+					<Add option="-DQT_USE_QSTRINGBUILDER"/>
+					<Add option="-DQT_STRICT_ITERATORS"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_NETWORK_LIB"/>
+					<Add option="-DKCOREADDONS_LIB"/>
+					<Add directory="/Users/yoshimi/Pictures/wpwiki/src"/>
+					<Add directory="/Users/yoshimi/Pictures/wpwiki/src/WPMediaWiki_autogen/include"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtCore.framework"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtCore.framework/Headers"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/./mkspecs/macx-clang"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtNetwork.framework"/>
+					<Add directory="/usr/local/Cellar/qt/5.9.1/lib/QtNetwork.framework/Headers"/>
+					<Add directory="/usr/local/include/KF5/KCoreAddons"/>
+					<Add directory="/usr/local/include/KF5"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 WPMediaWiki/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="WPMediaWiki_autogen">
+				<Option working_dir="/Users/yoshimi/Pictures/wpwiki/src"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 WPMediaWiki_autogen"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/yoshimi/Pictures/wpwiki/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/WPMediaWiki.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/WPMediaWiki.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/WPMediaWiki_autogen/mocs_compilation.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/browsepage.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/browsepage.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/query.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/query.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/shield.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/shield.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/wikipage.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/wikipage.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/work.cpp">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/work.h">
+			<Option target="WPMediaWiki"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/WPMediaWikiConfig.cmake.in">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/cmake/ECMConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/cmake/ECMConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMUseFindModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMGenerateHeaders.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMGeneratePriFile.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMSetupVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMMarkNonGuiExecutable.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMOptionalAddSubdirectory.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMQueryQmake.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMUninstallTarget.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ecm_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMEnableSanitizers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMCoverageOption.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMPackageConfigHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMVersionHeader.h.in">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/modules/ECMGeneratePriFile.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/kde-modules/KDEInstallDirs.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\kde-modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/kde-modules/KDECMakeSettings.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\kde-modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/kde-modules/KDEFrameworkCompilerSettings.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\kde-modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/share/ECM/kde-modules/KDECompilerSettings.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\share\ECM\kde-modules\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Network/Qt5NetworkConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Network/Qt5Network_QCoreWlanEnginePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/Cellar/qt/5.9.1/lib/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\qt\5.9.1\lib\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsToolingTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsToolingTargets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsTargets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/../../../../usr/local/lib/cmake/KF5CoreAddons/KF5CoreAddonsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\KF5CoreAddons\"/>
+		</Unit>
+		<Unit filename="/Users/yoshimi/Pictures/wpwiki/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD:src/logout.h
+
 /** ===========================================================
  * @file
  *
@@ -25,8 +25,6 @@
  * GNU General Public License for more details.
  *
  * ============================================================ */
-=======
->>>>>>> origin/master:examples/WikiSearch/mainwindow.cpp
 
 #ifndef MEDIAWIKI_LOGOUT_H
 #define MEDIAWIKI_LOGOUT_H
