@@ -33,7 +33,7 @@ public:
     QVector<Shield>         m_vec_shield;
     QMap<QString, QString>  requestParam;
     WikiPage                wiki_page;
-    CookieHandler           *cookie_handler;
+    //CookieHandler           *cookie_handler;
 
 };
 
@@ -75,13 +75,13 @@ void Query::setRevisionID(unsigned int id)
 
 void Query::start()
 {
-    QTimer::singleShot(0, this, SLOT(SendRequest()));
+    QTimer::singleShot(0, this, SLOT(doWorkSendRequest()));
 }
 
 //media wiki api form
 //api.php?action=query&titles=Albert%20Einstein&prop=info&format=xmlfm
 //you can see : https://www.MediaWiki.org/wiki/API:Data_formats
-void Query::SendRequest()
+void Query::doWorkSendRequest()
 {
     Q_D(Query);
 
@@ -104,24 +104,50 @@ void Query::SendRequest()
 
     url.setQuery(query);
 
-    // this part will handle in Cookiehandler.h
-    d->cookie_handler->sendSignal(url);
-    d->cookie_handler->sendPostRequest(d->m_MediaWiki.userAgent().toUtf8(),0);
+    // Set the request
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent", d->m_MediaWiki.userAgent().toUtf8());
+    QByteArray cookie = "";
+    QList<QNetworkCookie> mediawikiCookies = d->mManager->cookieJar()->cookiesForUrl(d->m_MediaWiki.url());
 
-    d->reply = d->cookie_handler->getReply();
+    for(int i = 0 ; i < mediawikiCookies.size(); ++i)
+    {
+        cookie += mediawikiCookies.at(i).toRawForm(QNetworkCookie::NameAndValueOnly);
+        cookie += ';';
+    }
+    request.setRawHeader( "Cookie", cookie );
 
+    // Send the request
+    d->reply = d->mManager->get(request);
     connectReply();
 
-     connect(d->reply, SIGNAL(finished()), this, SLOT(ProcessReply()));
+    connect(d->reply, SIGNAL(finished()),
+            this, SLOT(doWorkProcessReply()));
+
+
   }
 
 
-void Query::ProcessReply()
+
+
+    // this part will handle in Cookiehandler.h
+//    d->cookie_handler->sendSignal(url);
+//    d->cookie_handler->sendPostRequest(d->m_MediaWiki.userAgent().toUtf8(),0);
+
+//    d->reply = d->cookie_handler->getReply();
+
+//    connectReply();
+
+//     connect(d->reply, SIGNAL(finished()), this, SLOT(ProcessReply()));
+
+
+
+void Query::doWorkProcessReply()
 {
     Q_D(Query);
 
     disconnect(d->reply, SIGNAL(finished()),
-               this, SLOT(ProcessReply()));
+               this, SLOT(doWorkProcessReply()));
 
     if(d->reply->error() == QNetworkReply::NoError)
     {

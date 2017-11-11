@@ -26,11 +26,11 @@ public:
     }
 
 
-    void sendSignal(const QUrl &url)
+    void sendSignal(const QUrl url)
     {
-        mUrl = url;
-        connect(mManager, SIGNAL(finished(QNetworkReply*)),
-                SLOT(replyFinished(QNetworkReply*)));
+        mUrl= url;
+
+        replyFinished();
     }
 
 
@@ -75,13 +75,13 @@ public:
 public Q_SLOTS:
 
     //network --> reply
-    void replyFinished( QNetworkReply *reply)
+    void replyFinished( /*QNetworkReply *reply*/)
     {
 
-        if(reply->error() != QNetworkReply::NoError ){
-           qWarning() << "ERROR: " << reply->errorString();
-            return;
-          }
+//        if(reply->error() != QNetworkReply::NoError ){
+//           qWarning() << "ERROR: " << reply->errorString();
+//            return;
+//          }
         QByteArray bytecookie = "";
 
         QList<QNetworkCookie>  wikiCookies = mManager->cookieJar()->cookiesForUrl(mUrl);

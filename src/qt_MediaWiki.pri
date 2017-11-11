@@ -1,0 +1,10 @@
+QT.MediaWiki.VERSION = 1.0.0
+QT.MediaWiki.MAJOR_VERSION = 1
+QT.MediaWiki.MINOR_VERSION = 0
+QT.MediaWiki.PATCH_VERSION = 0
+QT.MediaWiki.name = WPMediaWiki
+QT.MediaWiki.defines = 
+QT.MediaWiki.includes = /usr/local/include/MediaWiki
+QT.MediaWiki.private_includes =
+QT.MediaWiki.libs = /usr/local/lib
+QT.MediaWiki.depends = core network
