@@ -1,6 +1,25 @@
 
 set(mediawiki_SRCS
     browsepage.cpp
+
+    image.cpp
+    imageinfo.cpp
+
+    login.cpp
+    logout.cpp
+
+    queryimageinfo.cpp
+    queryimages.cpp
+    querysiteinfogeneral.cpp
+    generalinfo.cpp
+    querysiteinfousergroups.cpp
+    queryrevision.cpp
+
+    usergroup.cpp
+    revision.cpp
+
+    parse.cpp
+    upload.cpp
     work.cpp
     WPMediaWiki.cpp
     query.cpp
@@ -28,8 +47,8 @@ target_link_libraries(WPMediaWiki
 )
 
 set_target_properties(WPMediaWiki
-    PROPERTIES VERSION ${WPWIKI_VERSION_STRING}
-    SOVERSION ${WPWIKI_SOVERSION}
+    PROPERTIES VERSION ${MEDIAWIKI_VERSION_STRING}
+    SOVERSION ${MEDIAWIKI_VERSION}
     EXPORT_NAME "MediaWiki"
 )
 ecm_generate_headers( MediaWiki_CamelCase_HEADERS
@@ -41,7 +60,25 @@ ecm_generate_headers( MediaWiki_CamelCase_HEADERS
                       query
                       wikipage
                       shield
-                      cookiehandler
+                      image
+                      imageinfo
+                      login
+                      logout
+
+                      queryimageinfo
+                      queryimages
+                      querysiteinfogeneral
+                      generalinfo
+                      querysiteinfousergroups
+                      queryrevision
+
+                      usergroup
+                      revision
+
+                      parse
+                      upload
+
+
                       REQUIRED_HEADERS MediaWiki_HEADERS)
 
 # Install files

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/logout.h
 /** ===========================================================
  * @file
  *
@@ -7,7 +8,7 @@
  * @date   2011-03-22
  * @brief  a MediaWiki C++ interface for KDE
  *
- * @author Copyright (C) 2011 by Gilles Caulier
+ * @author Copyright (C) 2011-2012 by Gilles Caulier
  *         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
  * @author Copyright (C) 2010 by Alexandre Mendes
  *         <a href="mailto:alex dot mendes1988 at gmail dot com">alex dot mendes1988 at gmail dot com</a>
@@ -24,21 +25,57 @@
  * GNU General Public License for more details.
  *
  * ============================================================ */
+=======
+>>>>>>> origin/master:examples/WikiSearch/mainwindow.cpp
 
-// Qt includes
-
-#include <QtWidgets/QApplication>
+#ifndef MEDIAWIKI_LOGOUT_H
+#define MEDIAWIKI_LOGOUT_H
 
 // Local includes
 
-//#include "mainwindow.h"
-#include "wikiform.h"
+#include "work.h"
+#include "mediawiki_export.h"
 
-int main(int argc, char* argv[])
+namespace mediawiki
 {
-    QApplication a(argc, argv);
-    WikiForm w;
-    w.show();
 
-    return a.exec();
-}
+class MediaWiki;
+class LogoutPrivate;
+
+/**
+ * @brief Logout job.
+ *
+ * Uses for log out a user.
+ */
+class MEDIAWIKI_EXPORT Logout : public Work
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE(Logout)
+
+public:
+
+    /**
+     * @brief Constructs a Logout job.
+     * @param parent the QObject parent
+     */
+    explicit Logout(WPMediaWiki& mediawiki, QObject* const parent = 0);
+
+    /**
+     * @brief Destroys the Logout job.
+     */
+    virtual ~Logout();
+
+    /**
+     * @brief Starts the job asynchronously.
+     */
+    void start() Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+
+    void doWorkSendRequest();
+    void doWorkProcessReply();
+};
+
+} // namespace mediawiki
+
+#endif // LOGOUT_H
