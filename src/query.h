@@ -82,8 +82,8 @@ private Q_SLOTS:
     /**
      * @brief SendRequest
      */
-    void SendRequest();
-    void ProcessReply();
+    void doWorkSendRequest();
+    void doWorkProcessReply();
 
 
 };

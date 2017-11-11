@@ -1,6 +1,25 @@
 
 set(mediawiki_SRCS
     browsepage.cpp
+
+    image.cpp
+    imageinfo.cpp
+
+    login.cpp
+    logout.cpp
+
+    queryimageinfo.cpp
+    queryimages.cpp
+    querysiteinfogeneral.cpp
+    generalinfo.cpp
+    querysiteinfousergroups.cpp
+    queryrevision.cpp
+
+    usergroup.cpp
+    revision.cpp
+
+    parse.cpp
+    upload.cpp
     work.cpp
     WPMediaWiki.cpp
     query.cpp
@@ -41,7 +60,25 @@ ecm_generate_headers( MediaWiki_CamelCase_HEADERS
                       query
                       wikipage
                       shield
-                      cookiehandler
+                      image
+                      imageinfo
+                      login
+                      logout
+
+                      queryimageinfo
+                      queryimages
+                      querysiteinfogeneral
+                      generalinfo
+                      querysiteinfousergroups
+                      queryrevision
+
+                      usergroup
+                      revision
+
+                      parse
+                      upload
+
+
                       REQUIRED_HEADERS MediaWiki_HEADERS)
 
 # Install files

@@ -289,26 +289,34 @@ void BrowsePage::sendRequest(WikiPage wiki_page)
 
     }
 
-    d->h_cookie->sendSignal(url);
+
+    QByteArray cookie;
+    QList<QNetworkCookie> mediawikiCookies = d->mManager->cookieJar()->cookiesForUrl(d->m_MediaWiki.url());
+    for(int i = 0 ; i < mediawikiCookies.size(); ++i)
+    {
+        cookie += mediawikiCookies.at(i).toRawForm(QNetworkCookie::NameAndValueOnly);
+        cookie += ';';
+    }
+    // Add the token
     url_query.addQueryItem(QStringLiteral("token"), d->requestParam[QStringLiteral("token")]);
     url.setQuery(url_query);
-
     d->baseUrl = url;
-    d->h_cookie->sendPostRequest(d->m_MediaWiki.userAgent().toUtf8(),1 );
-   // d->reply = d->h_cookie->getReply();
 
-    setPercent(25);
+    // Set the request
+    QNetworkRequest request( url );
+    request.setRawHeader("User-Agent", d->m_MediaWiki.userAgent().toUtf8());
+    request.setHeader(QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded"));
+    request.setRawHeader( "Cookie", cookie );
+
+    setPercent(25); // Request ready.
 
     // Send the request
-    d->h_cookie->setManagerPost();
-    d->reply = d->h_cookie->getReply();
-
-
+    d->reply = d->mManager->post( request, url.toString().toUtf8() );
     connectReply();
     connect( d->reply, SIGNAL(finished()),
              this, SLOT(finishedEdit()) );
 
-    setPercent(50);
+    setPercent(50); // Request sent.
 
 }
 

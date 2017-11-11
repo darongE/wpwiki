@@ -48,7 +48,7 @@ public:
        Filtered,
        ArticleSizeExceed,
        AnonymousEditPagePermissionMissing,
-       EditPagePermissionMissiing,
+       EditPagePermissionMissing,
        PageDeleted,
        EmptyPage,
        EmptySection,
@@ -163,7 +163,7 @@ public:
     void setPageName(const QString& pageName);
 
     /**
-     * @brief Set the edit token. Retrieve from QueryInfo.
+     * @brief Set the edit token. Retrieve from Query.
      * @param token the edit token
      */
     void setToken(const QString& token);
